@@ -9,7 +9,7 @@ const s8 = document.getElementById('scene-8');
 const s9 = document.getElementById('scene-9');
 const s10 = document.getElementById('scene-10');
 
-// Audio Setup
+// Audio elements
 const bgm = document.getElementById('audio-bgm');
 const webSound = document.getElementById('audio-web');
 const tickSound = document.getElementById('audio-tick');
@@ -20,47 +20,44 @@ document.getElementById('start-btn').addEventListener('click', () => {
 });
 
 function startTeaser() {
-    // --- STARTING SE BGM ON (0s) ---
+    // --- 0s: BGM Starts instantly ---
     bgm.play();
     bgm.volume = 0.5;
 
-    // --- SCENE 1: 17 Dec 2021 No Way Home ---
+    // --- SCENE 1: 17 Dec 2021 (Stays for 5s) ---
     s1.classList.add('active');
-    setTimeout(() => document.querySelector('.line-1a').classList.add('visible'), 500);
-    setTimeout(() => document.querySelector('.line-1b').classList.add('visible'), 1500);
+    setTimeout(() => document.querySelector('.line-1a').classList.add('visible'), 400);
+    setTimeout(() => document.querySelector('.line-1b').classList.add('visible'), 1400);
     
-    // Fade Out Scene 1
-    setTimeout(() => {
-        s1.classList.remove('active');
-    }, 4000);
+    // Slow Fade Out at 5th second
+    setTimeout(() => { s1.classList.remove('active'); }, 5000);
 
-    // --- SCENE 2: THE WORLD MOVED ON... ---
+    // --- SCENE 2: THE WORLD MOVED ON... (Stays for 5s) ---
     setTimeout(() => {
         s2.classList.add('active');
-        setTimeout(() => s2.querySelector('.cinematic-phrase').classList.add('visible'), 500);
-        setTimeout(() => s2.classList.remove('active'), 3000);
-    }, 4500);
+        setTimeout(() => s2.querySelector('.cinematic-phrase').classList.add('visible'), 400);
+        setTimeout(() => s2.classList.remove('active'), 5000);
+    }, 6200);
 
-    // --- SCENE 3: But one story... ---
+    // --- SCENE 3: But one story... (Stays for 5s) ---
     setTimeout(() => {
         s3.classList.add('active');
-        setTimeout(() => s3.querySelector('.cinematic-phrase').classList.add('visible'), 500);
-        setTimeout(() => s3.classList.remove('active'), 3000);
-    }, 8000);
+        setTimeout(() => s3.querySelector('.cinematic-phrase').classList.add('visible'), 400);
+        setTimeout(() => s3.classList.remove('active'), 5000);
+    }, 12400);
 
-    // --- SCENE 4: Was only beginning. ---
+    // --- SCENE 4: Was only beginning. (Stays for 5s) ---
     setTimeout(() => {
         s4.classList.add('active');
-        setTimeout(() => s4.querySelector('.cinematic-phrase').classList.add('visible'), 500);
-        setTimeout(() => s4.classList.remove('active'), 3000);
-    }, 11500);
+        setTimeout(() => s4.querySelector('.cinematic-phrase').classList.add('visible'), 400);
+        setTimeout(() => s4.classList.remove('active'), 5000);
+    }, 18600);
 
-    // --- SCENE 5: Timeline (Only last digit changing + Sound Sync) ---
+    // --- SCENE 5: Timeline Counter (2021 up to 2026) ---
     setTimeout(() => {
-        s4.classList.remove('active');
         s5.classList.add('active');
 
-        const digits = ['1', '2', '3', '4', '5'];
+        const digits = ['1', '2', '3', '4', '5', '6']; // Changes from 2021 to 2026
         const digitEl = document.getElementById('changing-digit');
         const flash = document.querySelector('.flash-overlay');
 
@@ -72,48 +69,48 @@ function startTeaser() {
                 
                 flash.classList.add('flash-active');
                 setTimeout(() => flash.classList.remove('flash-active'), 250);
-            }, index * 1200);
+            }, index * 1100);
         });
         
-        setTimeout(() => s5.classList.remove('active'), 6500);
-    }, 15000);
+        setTimeout(() => s5.classList.remove('active'), 7500);
+    }, 24800);
 
-    // --- SCENE 6: 5 Years Later... ---
+    // --- SCENE 6: 5 Years Later... (Stays for 5s) ---
     setTimeout(() => {
         s6.classList.add('active');
-        setTimeout(() => s6.querySelector('.thunder-text').classList.add('visible'), 500);
+        setTimeout(() => s6.querySelector('.thunder-text').classList.add('visible'), 400);
         
-        // Sudden Andhera (Pitch Black before Logo)
-        setTimeout(() => s6.classList.remove('active'), 3000);
-    }, 22000);
+        // Pitch black dark shift
+        setTimeout(() => s6.classList.remove('active'), 5000);
+    }, 33500);
 
-    // --- SCENE 7: Text Logo & Webs Attack ---
+    // --- SCENE 7: Absolute Perfect Replica Logo Reveal & Web Shoot ---
     setTimeout(() => {
         s7.classList.add('active');
         const logoContainer = document.getElementById('text-logo-container');
         logoContainer.classList.add('show-logo');
-        bgm.volume = 1.0; // Heroic Peak
+        bgm.volume = 1.0; // Dynamic Audio Peak
 
-        // Web shoot directly triggers with sound after 3 seconds of logo zoom
+        // Logo shows for 3 seconds, then sudden web shoot attack with sound sync
         setTimeout(() => {
             const webs = document.querySelectorAll('.web');
             webs.forEach(w => w.classList.add('web-shoot'));
             webSound.currentTime = 0;
-            webSound.play();
+            webSound.play(); // Exact sound trigger time
 
-            // Stays on screen for 1 second, then Thwip Pull Out!
+            // Stays stuck to logo, then pull out jhatka!
             setTimeout(() => {
                 logoContainer.classList.add('logo-pulled-out');
                 webs.forEach(w => w.style.opacity = '0');
                 setTimeout(() => s7.classList.remove('active'), 500);
-            }, 1000);
+            }, 1200);
         }, 3000);
-    }, 25500);
+    }, 39700);
 
-    // --- SCENE 8: Booking Terminal ---
+    // --- SCENE 8: Booking Screen ---
     setTimeout(() => {
         s8.classList.add('active');
-        bgm.pause(); // Pure dramatic silence
+        bgm.pause(); // Extreme cinematic drop/silence
 
         const steps = [
             { id: 'line-search', text: 'Searching Shows...' },
@@ -127,33 +124,34 @@ function startTeaser() {
                 typeWriter(step.id, step.text, () => {
                     document.getElementById(step.id).innerHTML += '<span class="check-mark">✔</span>';
                 });
-            }, idx * 1400);
+            }, idx * 1300);
         });
         
-        setTimeout(() => s8.classList.remove('active'), 6500);
-    }, 30500);
+        setTimeout(() => s8.classList.remove('active'), 6200);
+    }, 45400);
 
-    // --- SCENE 9: ADVANCED TICKETS BOOKED (Fade in/out) ---
+    // --- SCENE 9: ADVANCED TICKETS BOOKED (Stays for 5s) ---
     setTimeout(() => {
         s9.classList.add('active');
-        bgm.currentTime = 45; 
+        bgm.currentTime = 40; 
         bgm.volume = 0.5;
         bgm.play();
 
         const ticketHeading = s9.querySelector('.ticket-heading');
-        setTimeout(() => ticketHeading.classList.add('visible'), 200);
+        setTimeout(() => ticketHeading.classList.add('visible'), 300);
 
         setTimeout(() => {
             ticketHeading.classList.remove('visible');
-            setTimeout(() => s9.classList.remove('active'), 800);
-        }, 3500);
-    }, 37500);
+            setTimeout(() => s9.classList.remove('active'), 1000);
+        }, 5000);
+    }, 52800);
 
-    // --- SCENE 10: I will return on 30 july ---
+    // --- SCENE 10: I will return on 30 july (Stays for 5s) ---
     setTimeout(() => {
         s10.classList.add('active');
+        setTimeout(() => s10.querySelector('.return-text').style.opacity = '1', 400);
 
-        // BGM Fade Out smoothly at the very end
+        // BGM smooth slow fade out at absolute end
         let fadeOutInterval = setInterval(() => {
             if (bgm.volume > 0.05) {
                 bgm.volume -= 0.05;
@@ -165,8 +163,8 @@ function startTeaser() {
 
         setTimeout(() => {
             s10.classList.remove('active');
-        }, 4000);
-    }, 42500);
+        }, 5000);
+    }, 6000);
 }
 
 function typeWriter(elementId, text, callback) {
@@ -180,4 +178,4 @@ function typeWriter(elementId, text, callback) {
         } else if (callback) { callback(); }
     }
     type();
-                                                     }
+}
