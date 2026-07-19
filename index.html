@@ -4,56 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spider-Man: Brand New Day | Teaser</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Video background me invisible rahega, sirf sound play hoga -->
-    <video loop id="bg-video" playsinline>
-        <source src="rain-video.mp4" type="video/mp4">
-    </video>
-
-    <!-- Play Teaser Button Cover -->
+    <!-- Play Teaser Button Cover (BGM start karne ke liye zaroori hai) -->
     <div id="start-overlay" class="scene active">
         <button id="start-btn">PLAY TEASER</button>
     </div>
 
-    <!-- Scene 1: Black Screen + Rain Sound + No Way Home Text -->
+    <!-- Scene 1: No Way Home Intro -->
     <div id="scene-1" class="scene">
         <div class="text-group">
-            <p class="fade-text line-a">The Last Known Record</p>
-            <p class="fade-text highlight-date line-b">17 December 2021</p>
-            <p class="fade-text title-sub line-c">Spider-Man: No Way Home</p>
+            <p class="fade-text highlight-date line-1a">17 December 2021</p>
+            <p class="fade-text title-sub line-1b">Spider-Man: No Way Home</p>
         </div>
     </div>
 
-    <!-- Scene 2: Story Continues (BGM starts) -->
+    <!-- Scene 2: The World Moved On -->
     <div id="scene-2" class="scene">
-        <div class="text-group-vertical">
-            <p class="line-1">The world moved on...</p>
-            <p class="line-2">But one story...</p>
-            <p class="line-3">...was only beginning.</p>
-        </div>
+        <p class="fade-text cinematic-phrase">THE WORLD MOVED ON...</p>
     </div>
 
-    <!-- Scene 3: Timeline (Tick sound + Flash) -->
+    <!-- Scene 3: But One Story -->
     <div id="scene-3" class="scene">
-        <div id="timeline-year">2022</div>
+        <p class="fade-text cinematic-phrase">But one story...</p>
+    </div>
+
+    <!-- Scene 4: Was Only Beginning -->
+    <div id="scene-4" class="scene">
+        <p class="fade-text cinematic-phrase">Was only beginning.</p>
+    </div>
+
+    <!-- Scene 5: Timeline Counter -->
+    <div id="scene-5" class="scene">
+        <div id="timeline-container">
+            <span>202</span><span id="changing-digit">1</span>
+        </div>
         <div class="flash-overlay"></div>
     </div>
 
-    <!-- Scene 4: Time Skip (Shake Effect) -->
-    <div id="scene-4" class="scene">
-        <div class="shake-container">
-            <h1 class="thunder-text">5 Years Later...</h1>
-        </div>
+    <!-- Scene 6: 5 Years Later -->
+    <div id="scene-6" class="scene">
+        <p class="fade-text thunder-text">5 Years Later...</p>
     </div>
 
-    <!-- Scene 5 & 6: Brand New Day Logo Reveal -->
-    <div id="scene-5-6" class="scene">
-        <img src="logo.png" id="main-logo" class="glow-pulse" alt="Spider-Man: Brand New Day">
+    <!-- Scene 7: Brand New Day Logo & Web Shoot -->
+    <div id="scene-7" class="scene">
+        <div id="text-logo-container" class="glow-pulse">
+            <div class="marvel-tag">MARVEL STUDIOS</div>
+            <div class="spidey-main-title">SPIDER-MAN</div>
+            <div class="spidey-sub-title">BRAND NEW DAY</div>
+        </div>
         
-        <!-- Animated Web Lines for Scene 7 -->
         <div class="web-lines">
             <div class="web w1"></div>
             <div class="web w2"></div>
@@ -62,7 +65,7 @@
         </div>
     </div>
 
-    <!-- Scene 8: Booking Process -->
+    <!-- Scene 8: Booking Terminal Process -->
     <div id="scene-8" class="scene">
         <div class="terminal">
             <div class="term-line" id="line-search"></div>
@@ -72,23 +75,21 @@
         </div>
     </div>
 
-    <!-- Scene 9: Final Booking Reveal -->
+    <!-- Scene 9: Advanced Tickets Booked Fade -->
     <div id="scene-9" class="scene">
-        <h1 class="ticket-heading">🎟️ ADVANCE TICKETS BOOKED</h1>
-        <p class="ticket-sub">First Day • First Show</p>
+        <h1 class="ticket-heading fade-text">🎟️ ADVANCED TICKETS BOOKED</h1>
     </div>
 
-    <!-- Scene 10: Ending -->
+    <!-- Scene 10: Final Return Date Announcement -->
     <div id="scene-10" class="scene">
-        <h2 class="see-you-text">See You In Theaters.</h2>
+        <h2 class="return-text">I will return on 30 july</h2>
     </div>
 
     <!-- Audio Clips -->
-    <audio id="audio-bgm" src="bgm.mp3"></audio>
+    <audio id="audio-bgm" src="bgm.mp3" loop></audio>
     <audio id="audio-web" src="web.mp3"></audio>
     <audio id="audio-tick" src="tick.mp3"></audio>
 
-    <script src="Script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
