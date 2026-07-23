@@ -17,7 +17,7 @@ body {
     align-items: center; 
     opacity: 0; 
     pointer-events: none; 
-    transition: opacity 1.2s ease-in-out; /* Smooth ultra slow fade out/in */
+    transition: opacity 1.2s ease-in-out; 
 }
 .scene.active { opacity: 1; pointer-events: auto; }
 
@@ -44,7 +44,7 @@ body {
 }
 #start-btn:hover { background: #e50914; box-shadow: 0 0 15px #e50914; }
 
-/* Cinematic Phrases & Fades */
+/* Text Animations & Fades */
 .fade-text { 
     font-size: 2rem; 
     letter-spacing: 3px; 
@@ -57,83 +57,33 @@ body {
 .title-sub { font-style: italic; color: #888; font-size: 1.8rem; }
 .visible { opacity: 1 !important; }
 
-/* Timeline Value Styling */
-#timeline-container { font-size: 6.5rem; font-weight: 900; letter-spacing: 5px; }
-#changing-digit { color: #e50914; display: inline-block; }
-.flash-overlay { position: absolute; width: 100%; height: 100%; background: #fff; opacity: 0; pointer-events: none; }
-.flash-active { animation: flashAnim 0.3s ease-out; }
-@keyframes flashAnim { 0% { opacity: 0.4; } 100% { opacity: 0; } }
-
 .thunder-text { font-size: 3.2rem; letter-spacing: 4px; font-family: sans-serif; font-weight: bold; }
 
-/* Precise Photo-Replication Custom Text Logo */
-#text-logo-container {
-    text-align: center;
-    opacity: 0;
-    transform: scale(0.7);
-    transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1.5s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#text-logo-container.show-logo { opacity: 1; transform: scale(1); }
-
-.marvel-tag {
-    background: #e50914;
-    color: #fff;
-    padding: 3px 12px;
-    font-size: 0.85rem;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 900;
-    letter-spacing: 2px;
-    border: 1px solid #fff;
-    margin-bottom: 8px;
-}
-
-.spidey-main-title {
-    font-size: 5.5rem;
-    font-weight: 900;
-    color: #e21417; /* Exact sharp red filling */
-    letter-spacing: -3px;
-    font-style: italic;
-    line-height: 0.95;
-    /* Multilayered deep text-shadow to replicate the exact metallic dark blue bevel/3D border */
-    text-shadow: 
-        0px 4px 0px #0b2f75, 
-        -3px 3px 0px #0b2f75, 
-        3px 3px 0px #0b2f75, 
-        -2px -2px 0px #1144a4, 
-        2px -2px 0px #1144a4,
-        0px 0px 10px rgba(11, 47, 117, 0.8);
-}
-
-.spidey-sub-title {
-    font-size: 2.2rem;
-    color: #ffcc00; /* Exact golden yellow from reference image */
-    font-weight: 900;
-    letter-spacing: 4px;
-    margin-top: 10px;
-    font-style: normal;
-}
-
-/* Webs Implementation */
-.web-lines { position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
-.web { position: absolute; background: rgba(255,255,255,0.95); height: 5px; width: 0; transition: width 0.18s ease-out; box-shadow: 0 0 12px #fff; }
-.w1 { top: 25%; left: 0; transform: rotate(12deg); transform-origin: left; }
-.w2 { top: 75%; left: 0; transform: rotate(-12deg); transform-origin: left; }
-.w3 { top: 25%; right: 0; transform: rotate(-12deg); transform-origin: right; }
-.w4 { top: 75%; right: 0; transform: rotate(12deg); transform-origin: right; }
-.web-shoot { width: 44% !important; }
-
-.logo-pulled-out { 
-    transform: scale(0) translateY(-1300px) !important; 
-    transition: transform 0.45s cubic-bezier(0.6, -0.28, 0.735, 0.045) !important; 
-}
-
-/* Terminal & Outro Alignment */
+/* Terminal & Outro */
 .terminal { font-family: monospace; width: 420px; max-width: 90%; text-align: left; margin: 0 auto; }
 .term-line { font-size: 1.4rem; margin: 18px 0; min-height: 32px; }
 .check-mark { color: #00ff00; margin-left: 12px; font-weight: bold; }
 
 .ticket-heading { font-size: 2.5rem; color: #ffcc00; font-family: sans-serif; font-weight: bold; }
-.return-text { font-size: 2.4rem; color: #fff; letter-spacing: 3px; font-weight: bold; font-family: sans-serif; }
+
+/* Word by Word Return Text Styling */
+.return-text { 
+    font-size: 2.2rem; 
+    color: #fff; 
+    letter-spacing: 2px; 
+    font-weight: bold; 
+    font-family: sans-serif; 
+    max-width: 800px;
+    line-height: 1.5;
+}
+.word-span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin: 0 6px;
+}
+.word-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
