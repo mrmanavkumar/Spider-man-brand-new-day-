@@ -1,11 +1,17 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { 
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+html, body { 
     background-color: #000; 
     color: #fff; 
     font-family: 'Arial Black', Impact, sans-serif; 
     overflow: hidden; 
     width: 100vw; 
-    height: 100vh; 
+    height: 100vh;
+    touch-action: manipulation;
 }
 
 .scene { 
@@ -18,6 +24,7 @@ body {
     opacity: 0; 
     pointer-events: none; 
     transition: opacity 1.2s ease-in-out; 
+    padding: 20px;
 }
 .scene.active { opacity: 1; pointer-events: auto; }
 
@@ -28,11 +35,13 @@ body {
     align-items: center;
     text-align: center;
     width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #start-overlay { background: #000; z-index: 10; }
 #start-btn { 
-    padding: 15px 30px; 
+    padding: 16px 36px; 
     background: transparent; 
     border: 2px solid #e50914; 
     color: #fff; 
@@ -40,49 +49,116 @@ body {
     letter-spacing: 3px; 
     cursor: pointer; 
     font-family: sans-serif;
+    border-radius: 6px;
     transition: 0.3s; 
 }
-#start-btn:hover { background: #e50914; box-shadow: 0 0 15px #e50914; }
+#start-btn:active { background: #e50914; }
 
-/* Text Animations & Fades */
+/* Text Animations & Fades - Mobile Optimized */
 .fade-text { 
-    font-size: 2rem; 
-    letter-spacing: 3px; 
+    font-size: clamp(1.4rem, 5vw, 2.2rem); 
+    letter-spacing: 2px; 
     opacity: 0; 
     font-family: sans-serif;
     transition: opacity 1.2s ease-in-out; 
 }
-.cinematic-phrase { font-size: 2.5rem; letter-spacing: 4px; font-weight: bold; }
-.date-white { color: #ffffff; font-weight: bold; font-size: 2.8rem; margin-bottom: 12px; }
-.title-sub { font-style: italic; color: #888; font-size: 1.8rem; }
+
+.cinematic-phrase { 
+    font-size: clamp(1.6rem, 6vw, 2.5rem); 
+    letter-spacing: 3px; 
+    font-weight: bold; 
+    line-height: 1.3;
+}
+
+.date-white { 
+    color: #ffffff; 
+    font-weight: bold; 
+    font-size: clamp(1.8rem, 7vw, 2.8rem); 
+    margin-bottom: 12px; 
+}
+
+.title-sub { 
+    font-style: italic; 
+    color: #888; 
+    font-size: clamp(1.2rem, 4.5vw, 1.8rem); 
+}
+
 .visible { opacity: 1 !important; }
 
-.thunder-text { font-size: 3.2rem; letter-spacing: 4px; font-family: sans-serif; font-weight: bold; }
+.thunder-text { 
+    font-size: clamp(2rem, 8vw, 3.2rem); 
+    letter-spacing: 3px; 
+    font-family: sans-serif; 
+    font-weight: bold; 
+}
 
-/* Terminal & Outro */
-.terminal { font-family: monospace; width: 420px; max-width: 90%; text-align: left; margin: 0 auto; }
-.term-line { font-size: 1.4rem; margin: 18px 0; min-height: 32px; }
-.check-mark { color: #00ff00; margin-left: 12px; font-weight: bold; }
+/* Spider-Man Brand New Day Title Styling */
+#title-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
-.ticket-heading { font-size: 2.5rem; color: #ffcc00; font-family: sans-serif; font-weight: bold; }
+.marvel-tag {
+    background: #e50914;
+    color: #fff;
+    padding: 2px 10px;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    font-family: sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.spidey-title {
+    font-size: clamp(2.8rem, 11vw, 5.5rem);
+    color: #e21417;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -1px;
+    line-height: 0.95;
+    text-shadow: 
+        0px 3px 0px #0b2f75, 
+        -2px 2px 0px #0b2f75, 
+        2px 2px 0px #0b2f75;
+}
+
+.spidey-sub {
+    font-size: clamp(1.2rem, 5vw, 2.2rem);
+    color: #ffcc00;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-top: 8px;
+}
+
+.ticket-heading { 
+    font-size: clamp(1.5rem, 5.5vw, 2.5rem); 
+    color: #ffcc00; 
+    font-family: sans-serif; 
+    font-weight: bold; 
+    line-height: 1.4;
+}
 
 /* Word by Word Return Text Styling */
 .return-text { 
-    font-size: 2.2rem; 
+    font-size: clamp(1.4rem, 5.5vw, 2.2rem); 
     color: #fff; 
-    letter-spacing: 2px; 
+    letter-spacing: 1px; 
     font-weight: bold; 
     font-family: sans-serif; 
-    max-width: 800px;
+    width: 100%;
     line-height: 1.5;
 }
+
 .word-span {
     opacity: 0;
     display: inline-block;
-    transform: translateY(15px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    margin: 0 6px;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    margin: 0 4px;
 }
+
 .word-visible {
     opacity: 1;
     transform: translateY(0);
