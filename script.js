@@ -1,165 +1,112 @@
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-}
+const s1 = document.getElementById('scene-1');
+const s2 = document.getElementById('scene-2');
+const s3 = document.getElementById('scene-3');
+const s4 = document.getElementById('scene-4');
+const s5 = document.getElementById('scene-5');
+const s6 = document.getElementById('scene-6');
+const s7 = document.getElementById('scene-7');
+const s8 = document.getElementById('scene-8');
 
-html, body { 
-    background-color: #000; 
-    color: #fff; 
-    font-family: 'Arial Black', Impact, sans-serif; 
-    overflow: hidden; 
-    width: 100vw; 
-    height: 100vh;
-    touch-action: manipulation;
-}
+const bgm = document.getElementById('audio-bgm');
 
-.scene { 
-    position: absolute; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    opacity: 0; 
-    pointer-events: none; 
-    transition: opacity 1.2s ease-in-out; 
-    padding: 20px;
-}
-.scene.active { opacity: 1; pointer-events: auto; }
+document.getElementById('start-btn').addEventListener('click', () => {
+    document.getElementById('start-overlay').classList.remove('active');
+    startTeaser();
+});
 
-.center-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
+function startTeaser() {
+    bgm.play();
+    bgm.volume = 0.6;
 
-#start-overlay { background: #000; z-index: 10; }
-#start-btn { 
-    padding: 16px 36px; 
-    background: transparent; 
-    border: 2px solid #e50914; 
-    color: #fff; 
-    font-size: 1.2rem; 
-    letter-spacing: 3px; 
-    cursor: pointer; 
-    font-family: sans-serif;
-    border-radius: 6px;
-    transition: 0.3s; 
-}
-#start-btn:active { background: #e50914; }
+    // --- SCENE 1: Intro (5s) ---
+    s1.classList.add('active');
+    setTimeout(() => document.querySelector('.line-1a').classList.add('visible'), 400);
+    setTimeout(() => document.querySelector('.line-1b').classList.add('visible'), 1400);
+    setTimeout(() => { s1.classList.remove('active'); }, 5000);
 
-/* Text Animations & Fades - Mobile Optimized */
-.fade-text { 
-    font-size: clamp(1.4rem, 5vw, 2.2rem); 
-    letter-spacing: 2px; 
-    opacity: 0; 
-    font-family: sans-serif;
-    transition: opacity 1.2s ease-in-out; 
-}
+    // --- SCENE 2: THE WORLD MOVED ON... (5s) ---
+    setTimeout(() => {
+        s2.classList.add('active');
+        setTimeout(() => s2.querySelector('.cinematic-phrase').classList.add('visible'), 400);
+        setTimeout(() => s2.classList.remove('active'), 5000);
+    }, 6200);
 
-.cinematic-phrase { 
-    font-size: clamp(1.6rem, 6vw, 2.5rem); 
-    letter-spacing: 3px; 
-    font-weight: bold; 
-    line-height: 1.3;
-}
+    // --- SCENE 3: But one story... (5s) ---
+    setTimeout(() => {
+        s3.classList.add('active');
+        setTimeout(() => s3.querySelector('.cinematic-phrase').classList.add('visible'), 400);
+        setTimeout(() => s3.classList.remove('active'), 5000);
+    }, 12400);
 
-.date-white { 
-    color: #ffffff; 
-    font-weight: bold; 
-    font-size: clamp(1.8rem, 7vw, 2.8rem); 
-    margin-bottom: 12px; 
-}
+    // --- SCENE 4: Was only beginning. (5s) ---
+    setTimeout(() => {
+        s4.classList.add('active');
+        setTimeout(() => s4.querySelector('.cinematic-phrase').classList.add('visible'), 400);
+        setTimeout(() => s4.classList.remove('active'), 5000);
+    }, 18600);
 
-.title-sub { 
-    font-style: italic; 
-    color: #888; 
-    font-size: clamp(1.2rem, 4.5vw, 1.8rem); 
-}
+    // --- SCENE 5: 5 Years Later... (5s) ---
+    setTimeout(() => {
+        s5.classList.add('active');
+        setTimeout(() => s5.querySelector('.thunder-text').classList.add('visible'), 400);
+        setTimeout(() => s5.classList.remove('active'), 5000);
+    }, 24800);
 
-.visible { opacity: 1 !important; }
+    // --- SCENE 6: SPIDER-MAN BRAND NEW DAY (5s) ---
+    setTimeout(() => {
+        s6.classList.add('active');
+        setTimeout(() => s6.classList.remove('active'), 5000);
+    }, 31000);
 
-.thunder-text { 
-    font-size: clamp(2rem, 8vw, 3.2rem); 
-    letter-spacing: 3px; 
-    font-family: sans-serif; 
-    font-weight: bold; 
-}
+    // --- SCENE 7: ADVANCED TICKETS BOOKED (5s) ---
+    setTimeout(() => {
+        s7.classList.add('active');
+        const ticketHeading = s7.querySelector('.ticket-heading');
+        setTimeout(() => ticketHeading.classList.add('visible'), 300);
 
-/* Spider-Man Brand New Day Title Styling */
-#title-text-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
+        setTimeout(() => {
+            ticketHeading.classList.remove('visible');
+            setTimeout(() => s7.classList.remove('active'), 1000);
+        }, 5000);
+    }, 37200);
 
-.marvel-tag {
-    background: #e50914;
-    color: #fff;
-    padding: 2px 10px;
-    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-    font-family: sans-serif;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-}
+    // --- SCENE 8: Word by Word Reveal ("I will return on 30 july in theatres") ---
+    setTimeout(() => {
+        s8.classList.add('active');
+        
+        const sentence = "I will return on 30 july in theatres";
+        const words = sentence.split(" ");
+        const container = document.getElementById('word-container');
+        container.innerHTML = "";
 
-.spidey-title {
-    font-size: clamp(2.8rem, 11vw, 5.5rem);
-    color: #e21417;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -1px;
-    line-height: 0.95;
-    text-shadow: 
-        0px 3px 0px #0b2f75, 
-        -2px 2px 0px #0b2f75, 
-        2px 2px 0px #0b2f75;
-}
+        words.forEach((word) => {
+            const span = document.createElement('span');
+            span.className = 'word-span';
+            span.innerText = word;
+            container.appendChild(span);
+        });
 
-.spidey-sub {
-    font-size: clamp(1.2rem, 5vw, 2.2rem);
-    color: #ffcc00;
-    font-weight: 900;
-    letter-spacing: 3px;
-    margin-top: 8px;
-}
+        const wordSpans = container.querySelectorAll('.word-span');
+        wordSpans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add('word-visible');
+            }, index * 400); // Har 400ms me ek word reveal hoga
+        });
 
-.ticket-heading { 
-    font-size: clamp(1.5rem, 5.5vw, 2.5rem); 
-    color: #ffcc00; 
-    font-family: sans-serif; 
-    font-weight: bold; 
-    line-height: 1.4;
-}
+        // BGM smooth slow fade out after final text
+        setTimeout(() => {
+            let fadeOutInterval = setInterval(() => {
+                if (bgm.volume > 0.05) {
+                    bgm.volume -= 0.05;
+                } else {
+                    bgm.pause();
+                    clearInterval(fadeOutInterval);
+                }
+            }, 300);
+        }, 3500);
 
-/* Word by Word Return Text Styling */
-.return-text { 
-    font-size: clamp(1.4rem, 5.5vw, 2.2rem); 
-    color: #fff; 
-    letter-spacing: 1px; 
-    font-weight: bold; 
-    font-family: sans-serif; 
-    width: 100%;
-    line-height: 1.5;
-}
-
-.word-span {
-    opacity: 0;
-    display: inline-block;
-    transform: translateY(12px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    margin: 0 4px;
-}
-
-.word-visible {
-    opacity: 1;
-    transform: translateY(0);
+        setTimeout(() => {
+            s8.classList.remove('active');
+        }, 7000);
+    }, 44400);
 }
