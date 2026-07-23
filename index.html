@@ -13,7 +13,7 @@
         <button id="start-btn">PLAY TEASER</button>
     </div>
 
-    <!-- Scene 1: No Way Home Intro (Date is now purely White) -->
+    <!-- Scene 1: No Way Home Intro (White Date, Center) -->
     <div id="scene-1" class="scene">
         <div class="center-content">
             <p class="fade-text date-white line-1a">17 December 2021</p>
@@ -42,41 +42,15 @@
         </div>
     </div>
 
-    <!-- Scene 5: Timeline Counter (Up to 2026) -->
+    <!-- Scene 5: 5 Years Later... -->
     <div id="scene-5" class="scene">
-        <div class="center-content">
-            <div id="timeline-container">
-                <span>202</span><span id="changing-digit">1</span>
-            </div>
-        </div>
-        <div class="flash-overlay"></div>
-    </div>
-
-    <!-- Scene 6: 5 Years Later... -->
-    <div id="scene-6" class="scene">
         <div class="center-content">
             <p class="fade-text thunder-text">5 Years Later...</p>
         </div>
     </div>
 
-    <!-- Scene 7: Brand New Day Photo-Identical Logo & Web Shoot -->
-    <div id="scene-7" class="scene">
-        <div id="text-logo-container">
-            <div class="marvel-tag">MARVEL STUDIOS</div>
-            <h1 class="spidey-main-title">SPIDER-MAN</h1>
-            <div class="spidey-sub-title">BRAND NEW DAY</div>
-        </div>
-        
-        <div class="web-lines">
-            <div class="web w1"></div>
-            <div class="web w2"></div>
-            <div class="web w3"></div>
-            <div class="web w4"></div>
-        </div>
-    </div>
-
-    <!-- Scene 8: Booking Terminal -->
-    <div id="scene-8" class="scene">
+    <!-- Scene 6: Booking Terminal -->
+    <div id="scene-6" class="scene">
         <div class="center-content">
             <div class="terminal">
                 <div class="term-line" id="line-search"></div>
@@ -87,24 +61,22 @@
         </div>
     </div>
 
-    <!-- Scene 9: ADVANCED TICKETS BOOKED -->
-    <div id="scene-9" class="scene">
+    <!-- Scene 7: ADVANCED TICKETS BOOKED -->
+    <div id="scene-7" class="scene">
         <div class="center-content">
             <h1 class="ticket-heading fade-text">🎟️ ADVANCED TICKETS BOOKED</h1>
         </div>
     </div>
 
-    <!-- Scene 10: Final Return Date -->
-    <div id="scene-10" class="scene">
+    <!-- Scene 8: Final Return Date (Word by Word) -->
+    <div id="scene-8" class="scene">
         <div class="center-content">
-            <h2 class="return-text">I will return on 30 july</h2>
+            <h2 class="return-text" id="word-container"></h2>
         </div>
     </div>
 
     <!-- Audio Clips -->
     <audio id="audio-bgm" src="bgm.mp3" loop></audio>
-    <audio id="audio-web" src="web.mp3"></audio>
-    <audio id="audio-tick" src="tick.mp3"></audio>
 
     <script src="script.js"></script>
 </body>
