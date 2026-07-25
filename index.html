@@ -70,7 +70,7 @@
             max-width: 600px;
         }
 
-        /* Text Styling & Responsiveness */
+        /* Text Styling */
         .fade-text { 
             font-size: clamp(1.4rem, 5vw, 2.2rem); 
             letter-spacing: 2px; 
@@ -149,27 +149,28 @@
             line-height: 1.4;
         }
 
-        /* Word-by-Word Animation */
+        /* Word-by-Word Smooth Sync Styling */
         .return-text { 
-            font-size: clamp(1.4rem, 5.5vw, 2.2rem); 
+            font-size: clamp(1.5rem, 6vw, 2.5rem); 
             color: #fff; 
             letter-spacing: 1px; 
             font-weight: bold; 
             width: 100%;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .word-span {
             opacity: 0;
             display: inline-block;
-            transform: translateY(12px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.8) translateY(10px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
             margin: 0 4px;
         }
 
         .word-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1) translateY(0);
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
         }
     </style>
 </head>
@@ -216,7 +217,7 @@
         </div>
     </div>
 
-    <!-- Scene 6: SPIDER-MAN BRAND NEW DAY -->
+    <!-- Scene 6: Title -->
     <div id="scene-6" class="scene">
         <div class="center-content">
             <div id="title-text-box">
@@ -227,105 +228,102 @@
         </div>
     </div>
 
-    <!-- Scene 7: TICKETS -->
+    <!-- Scene 7: Tickets -->
     <div id="scene-7" class="scene">
         <div class="center-content">
             <h1 class="ticket-heading fade-text">🎟️ ADVANCED TICKETS BOOKED</h1>
         </div>
     </div>
 
-    <!-- Scene 8: Final Word By Word Sentence -->
+    <!-- Scene 8: Sync Ending Sentence -->
     <div id="scene-8" class="scene">
         <div class="center-content">
             <h2 class="return-text" id="word-container"></h2>
         </div>
     </div>
 
-    <!-- Audio Tag -->
+    <!-- BGM Audio Element -->
     <audio id="audio-bgm" src="bgm.mp3" preload="auto"></audio>
 
     <script>
         document.getElementById('start-btn').addEventListener('click', function() {
-            // Hide Overlay
             document.getElementById('start-overlay').style.display = 'none';
 
-            // Play Audio safely
             const bgm = document.getElementById('audio-bgm');
             if (bgm) {
-                bgm.volume = 0.6;
-                bgm.play().catch(function(err) {
-                    console.log("Audio block error handled:", err);
-                });
+                bgm.volume = 0.7;
+                bgm.play().catch(function(err) { console.log(err); });
             }
 
-            // Start Teaser Sequence
             runTeaserSequence(bgm);
         });
 
         function runTeaserSequence(bgm) {
-            const s1 = document.getElementById('scene-1');
-            const s2 = document.getElementById('scene-2');
-            const s3 = document.getElementById('scene-3');
-            const s4 = document.getElementById('scene-4');
-            const s5 = document.getElementById('scene-5');
-            const s6 = document.getElementById('scene-6');
-            const s7 = document.getElementById('scene-7');
-            const s8 = document.getElementById('scene-8');
+            const scenes = [
+                document.getElementById('scene-1'),
+                document.getElementById('scene-2'),
+                document.getElementById('scene-3'),
+                document.getElementById('scene-4'),
+                document.getElementById('scene-5'),
+                document.getElementById('scene-6'),
+                document.getElementById('scene-7'),
+                document.getElementById('scene-8')
+            ];
 
-            // --- Scene 1 ---
-            s1.classList.add('active');
+            // Scene 1
+            scenes[0].classList.add('active');
             setTimeout(() => { document.querySelector('.line-1a').classList.add('visible'); }, 300);
-            setTimeout(() => { document.querySelector('.line-1b').classList.add('visible'); }, 1200);
-            setTimeout(() => { s1.classList.remove('active'); }, 4500);
+            setTimeout(() => { document.querySelector('.line-1b').classList.add('visible'); }, 1000);
+            setTimeout(() => { scenes[0].classList.remove('active'); }, 4000);
 
-            // --- Scene 2 ---
+            // Scene 2
             setTimeout(() => {
-                s2.classList.add('active');
-                setTimeout(() => s2.querySelector('.cinematic-phrase').classList.add('visible'), 300);
-                setTimeout(() => s2.classList.remove('active'), 4500);
-            }, 5000);
+                scenes[1].classList.add('active');
+                setTimeout(() => scenes[1].querySelector('.cinematic-phrase').classList.add('visible'), 300);
+                setTimeout(() => scenes[1].classList.remove('active'), 4000);
+            }, 4500);
 
-            // --- Scene 3 ---
+            // Scene 3
             setTimeout(() => {
-                s3.classList.add('active');
-                setTimeout(() => s3.querySelector('.cinematic-phrase').classList.add('visible'), 300);
-                setTimeout(() => s3.classList.remove('active'), 4500);
-            }, 10000);
+                scenes[2].classList.add('active');
+                setTimeout(() => scenes[2].querySelector('.cinematic-phrase').classList.add('visible'), 300);
+                setTimeout(() => scenes[2].classList.remove('active'), 4000);
+            }, 9000);
 
-            // --- Scene 4 ---
+            // Scene 4
             setTimeout(() => {
-                s4.classList.add('active');
-                setTimeout(() => s4.querySelector('.cinematic-phrase').classList.add('visible'), 300);
-                setTimeout(() => s4.classList.remove('active'), 4500);
-            }, 15000);
+                scenes[3].classList.add('active');
+                setTimeout(() => scenes[3].querySelector('.cinematic-phrase').classList.add('visible'), 300);
+                setTimeout(() => scenes[3].classList.remove('active'), 4000);
+            }, 13500);
 
-            // --- Scene 5 ---
+            // Scene 5
             setTimeout(() => {
-                s5.classList.add('active');
-                setTimeout(() => s5.querySelector('.thunder-text').classList.add('visible'), 300);
-                setTimeout(() => s5.classList.remove('active'), 4500);
-            }, 20000);
+                scenes[4].classList.add('active');
+                setTimeout(() => scenes[4].querySelector('.thunder-text').classList.add('visible'), 300);
+                setTimeout(() => scenes[4].classList.remove('active'), 4000);
+            }, 18000);
 
-            // --- Scene 6 ---
+            // Scene 6 (Title Card)
             setTimeout(() => {
-                s6.classList.add('active');
-                setTimeout(() => s6.classList.remove('active'), 4500);
-            }, 25000);
+                scenes[5].classList.add('active');
+                setTimeout(() => scenes[5].classList.remove('active'), 4000);
+            }, 22500);
 
-            // --- Scene 7 ---
+            // Scene 7 (Advanced Tickets)
             setTimeout(() => {
-                s7.classList.add('active');
-                const h1 = s7.querySelector('.ticket-heading');
+                scenes[6].classList.add('active');
+                const h1 = scenes[6].querySelector('.ticket-heading');
                 setTimeout(() => h1.classList.add('visible'), 300);
                 setTimeout(() => {
                     h1.classList.remove('visible');
-                    s7.classList.remove('active');
-                }, 4500);
-            }, 30000);
+                    scenes[6].classList.remove('active');
+                }, 4000);
+            }, 27000);
 
-            // --- Scene 8: Word By Word Reveal ---
+            // Scene 8: Ending Sentence (Synced with Music Finale)
             setTimeout(() => {
-                s8.classList.add('active');
+                scenes[7].classList.add('active');
                 
                 const sentence = "I will return on 30 july in theatres";
                 const words = sentence.split(" ");
@@ -340,13 +338,15 @@
                 });
 
                 const spans = container.querySelectorAll('.word-span');
+                
+                // Slowly reveal each word along with ending music beats
                 spans.forEach((span, idx) => {
                     setTimeout(() => {
                         span.classList.add('word-visible');
-                    }, idx * 350);
+                    }, idx * 550); // Har 550ms par ek word beat ke sath aayega
                 });
 
-                // Fade Out Music
+                // Smooth Audio Fade-out right as text finishes
                 setTimeout(() => {
                     if (bgm) {
                         let fade = setInterval(() => {
@@ -354,9 +354,9 @@
                             else { bgm.pause(); clearInterval(fade); }
                         }, 200);
                     }
-                }, 3000);
+                }, (words.length * 550) + 1000);
 
-            }, 35000);
+            }, 31500);
         }
     </script>
 </body>
